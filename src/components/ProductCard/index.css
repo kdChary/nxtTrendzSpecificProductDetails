@@ -1,5 +1,9 @@
 /* TODO: Add your CSS here */
 
+.link-item {
+  text-decoration: none;
+}
+
 .product-item {
   display: flex;
   flex-direction: column;
