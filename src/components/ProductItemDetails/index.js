@@ -132,16 +132,12 @@ class ProductItemDetails extends Component {
         <img src={imageUrl} alt="product" className="product-item-image" />
 
         <div className="product-item-details">
-          <div className="product-item-details-card">
-            <h2 className="product-item-title">{title}</h2>
-          </div>
+          <h2 className="product-item-title">{title}</h2>
 
-          <div className="product-item-details-card">
-            <p className="product-item-price">RS {price}</p>
-          </div>
+          <p className="product-item-price">Rs {price}/- </p>
 
-          <div className="product-details-rating">
-            <div className="product-rating">
+          <div className="product-item-rating-container">
+            <div className="rating-card">
               <p className="rating-text">{rating}</p>
 
               <img
@@ -149,9 +145,9 @@ class ProductItemDetails extends Component {
                 alt="star"
                 className="star-img"
               />
-
-              <p className="product-item-reviews">{totalReviews}</p>
             </div>
+
+            <p className="product-item-reviews">{totalReviews} Reviews</p>
           </div>
 
           <p className="product-item-description">{description}</p>
