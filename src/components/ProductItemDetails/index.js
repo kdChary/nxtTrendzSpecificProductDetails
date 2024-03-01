@@ -187,6 +187,8 @@ class ProductItemDetails extends Component {
             </button>
           </div>
 
+          <hr className="line" />
+
           <button type="button" className="add-to-cart-btn">
             ADD TO CART
           </button>
