@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import {Component} from 'react'
-import {Cookies} from 'js-cookie'
+import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
@@ -46,11 +46,11 @@ class ProductItemDetails extends Component {
 
     this.setState({fetchStatus: apiStatConstant.inProgress})
 
-    const token = Cookies.get('jwt_token')
+    const jwtToken = Cookies.get('jwt_token')
     const url = `https://apis.ccbp.in/products/${id}`
     const options = {
-      header: {
-        Authorization: `Bearer ${token}`,
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
     }
