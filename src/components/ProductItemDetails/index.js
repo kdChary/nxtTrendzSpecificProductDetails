@@ -154,9 +154,7 @@ class ProductItemDetails extends Component {
             </div>
           </div>
 
-          <div className="product-item-details-card">
-            <p className="product-item-description">{description}</p>
-          </div>
+          <p className="product-item-description">{description}</p>
 
           <div className="product-item-details-card">
             <p className="product-item-details-tags">
