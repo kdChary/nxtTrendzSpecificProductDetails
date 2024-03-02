@@ -7,6 +7,7 @@ import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 
 import './index.css'
 import Header from '../Header'
+import SimilarProductItem from '../SimilarProductItem'
 
 const apiStatConstant = {
   initial: 'INITIAL',
@@ -109,9 +110,12 @@ class ProductItemDetails extends Component {
   }
 
   decreaseQuantity = () => {
-    this.setState(prevState => ({
-      productQuantity: prevState.productQuantity - 1,
-    }))
+    const {productQuantity} = this.state
+    if (productQuantity > 1) {
+      this.setState(prevState => ({
+        productQuantity: prevState.productQuantity - 1,
+      }))
+    }
   }
 
   renderProductItem = () => {
@@ -128,68 +132,71 @@ class ProductItemDetails extends Component {
     } = productData
 
     return (
-      <div className="product-item-card">
-        <img src={imageUrl} alt="product" className="product-item-image" />
+      <>
+        <div className="product-item-card">
+          <img src={imageUrl} alt="product" className="product-item-image" />
 
-        <div className="product-item-details">
-          <h2 className="product-item-title">{title}</h2>
+          <div className="product-item-details">
+            <h2 className="product-item-title">{title}</h2>
 
-          <p className="product-item-price">Rs {price}/- </p>
+            <p className="product-item-price">Rs {price}/- </p>
 
-          <div className="product-item-rating-container">
-            <div className="rating-card">
-              <p className="rating-text">{rating}</p>
+            <div className="product-item-rating-container">
+              <div className="rating-card">
+                <p className="rating-text">{rating}</p>
 
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-                alt="star"
-                className="star-img"
-              />
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+                  alt="star"
+                  className="star-img"
+                />
+              </div>
+
+              <p className="product-item-reviews">{totalReviews} Reviews</p>
             </div>
 
-            <p className="product-item-reviews">{totalReviews} Reviews</p>
-          </div>
+            <p className="product-item-description">{description}</p>
 
-          <p className="product-item-description">{description}</p>
+            <div className="product-item-label-card">
+              <p className="product-item-label">Available: </p>
+              <p className="label-text">{availability}</p>
+            </div>
+            <div className="product-item-label-card">
+              <p className="product-item-label">Brand: </p>
+              <p className="label-text">{brand}</p>
+            </div>
 
-          <div className="product-item-label-card">
-            <p className="product-item-label">Available: </p>
-            <p className="label-text">{availability}</p>
-          </div>
-          <div className="product-item-label-card">
-            <p className="product-item-label">Brand: </p>
-            <p className="label-text">{brand}</p>
-          </div>
+            <div className="product-item-quantity-card">
+              <button
+                className="quantity-btn"
+                type="button"
+                data-testid="minus"
+                onClick={this.decreaseQuantity}
+              >
+                <BsDashSquare className="quantity-control-icon" />
+              </button>
 
-          <div className="product-item-quantity-card">
-            <button
-              className="quantity-btn"
-              type="button"
-              data-testid="minus"
-              onClick={this.decreaseQuantity}
-            >
-              <BsDashSquare className="quantity-control-icon" />
+              <p className="product-item-quantity">{productQuantity}</p>
+
+              <button
+                className="quantity-btn"
+                type="button"
+                data-testid="plus"
+                onClick={this.increaseQuantity}
+              >
+                <BsPlusSquare className="quantity-control-icon" />
+              </button>
+            </div>
+
+            <hr className="line" />
+
+            <button type="button" className="add-to-cart-btn">
+              ADD TO CART
             </button>
-
-            <p className="product-item-quantity">{productQuantity}</p>
-
-            <button
-              className="quantity-btn"
-              type="button"
-              data-testid="plus"
-              onClick={this.increaseQuantity}
-            >
-              <BsPlusSquare className="quantity-control-icon" />
-            </button>
           </div>
-
-          <hr className="line" />
-
-          <button type="button" className="add-to-cart-btn">
-            ADD TO CART
-          </button>
         </div>
-      </div>
+        {this.renderSimilarProductItem()}
+      </>
     )
   }
 
@@ -210,10 +217,30 @@ class ProductItemDetails extends Component {
         return null
     }
   }
+  //  TODO: add SimilarProducts Component
+
+  renderSimilarProductItem = () => {
+    const {similarProducts} = this.state
+
+    return (
+      <div className="similar-products-container">
+        <h3 className="similar-products-title">Similar Products</h3>
+        <ul className="similar-products-list">
+          {similarProducts.map(product => (
+            <SimilarProductItem key={product.id} productData={product} />
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
   render() {
-    const {similarProducts} = this.state
-    console.log(similarProducts)
+    const token = Cookies.get('jwt_token')
+
+    if (token === undefined) {
+      const {history} = this.props
+      history.replace('/login')
+    }
 
     return (
       <>

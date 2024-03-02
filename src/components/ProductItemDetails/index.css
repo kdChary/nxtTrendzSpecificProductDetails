@@ -1,7 +1,6 @@
 .product-item-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-height: 70vh;
   margin-top: 24px;
   font-family: 'Roboto';
@@ -166,4 +165,31 @@
   font-size: 13px;
   font-weight: 500;
   color: #475560;
+}
+
+.similar-products-title {
+  font-size: 19px;
+  color: #616e7c;
+  margin-left: 48px;
+}
+
+.similar-products-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 24px;
+}
+.similar-products-list {
+  list-style-type: none;
+  padding-left: 0;
+  width: 80%;
+  margin-left: 48px;
+}
+@media (min-width: 768px) {
+  .similar-products-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }

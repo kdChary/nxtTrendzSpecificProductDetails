@@ -1,1 +1,37 @@
-/* Write your CSS here */
+.similar-products-item {
+  padding: 9px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.product-thumbnail {
+  width: 175px;
+  border: none;
+  border-radius: 7px;
+}
+
+.similar-product-title {
+  /* font-size: 17px; */
+  color: #475569;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.similar-product-brand {
+  font-size: 13px;
+  /* font-weight: 500; */
+  color: #475569;
+  margin-bottom: 0;
+}
+
+.similar-product-price-rating-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.similar-product-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: #171f46;
+}
