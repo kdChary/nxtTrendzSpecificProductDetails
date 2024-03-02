@@ -90,7 +90,7 @@ class ProductItemDetails extends Component {
 
     return (
       <div className="failure-card">
-        <img src={imageUrl} alt="error view" className="error-img" />
+        <img src={imageUrl} alt="failure view" className="error-img" />
 
         <h2 className="error-title">Product Not Found</h2>
 
