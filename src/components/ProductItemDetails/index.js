@@ -152,13 +152,13 @@ class ProductItemDetails extends Component {
 
           <p className="product-item-description">{description}</p>
 
-          <div className="product-item-details-card">
-            <p className="product-item-details-tags">
-              Available: <span className="tags-text">{availability}</span>
-            </p>
-            <p className="product-item-details-tags">
-              Brand: <span className="tags-text">{brand}</span>
-            </p>
+          <div className="product-item-label-card">
+            <p className="product-item-label">Available: </p>
+            <p className="label-text">{availability}</p>
+          </div>
+          <div className="product-item-label-card">
+            <p className="product-item-label">Brand: </p>
+            <p className="label-text">{brand}</p>
           </div>
 
           <div className="product-item-quantity-card">
